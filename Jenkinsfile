@@ -6,6 +6,7 @@ pipeline {
         }
     }
     environment {
+        CI = 'true'
         HOME = "${WORKSPACE}"
         NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
@@ -13,6 +14,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh './jenkins/scripts/test.sh' 
             }
         }
     }
