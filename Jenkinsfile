@@ -1,15 +1,18 @@
 pipeline {
     agent {
         docker {
-            image 'node:lts-buster-slim' 
-            args '-p 3000:3000' 
+            image 'node:14-alpine'
+            args '-p 3001:3001'
         }
     }
+    environment {
+        HOME = "${WORKSPACE}"
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+    }
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'npm install' 
+                sh 'npm install'
             }
         }
     }
-}
