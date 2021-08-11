@@ -37,4 +37,14 @@ describe('users repository tests', () => {
     expect(mockCreate).toHaveBeenCalledWith(userSchemaParam);
     expect(result).toStrictEqual(expectedResponse);
   });
+
+  it('should call to schema model find method when repository list method is called', async () => {
+    const expectedResponse = { data: 'data' };
+    mockFind.mockResolvedValue(expectedResponse);
+
+    const result = await userRepository.list();
+
+    expect(mockFind).toHaveBeenCalledTimes(1);
+    expect(result).toStrictEqual(expectedResponse);
+  });
 });
