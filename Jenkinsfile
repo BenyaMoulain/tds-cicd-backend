@@ -9,6 +9,7 @@ pipeline {
         CI = 'true'
         HOME = "${WORKSPACE}"
         NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+        MONGOURI="${MONGOURI}"
     }
     stages {
         stage('Build') {
