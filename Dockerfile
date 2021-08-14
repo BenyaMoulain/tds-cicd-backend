@@ -1,11 +1,10 @@
 FROM node:14-alpine
+ARG MONGOURI
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 COPY package*.json ./
 RUN npm install
-ARG MONGOURI
-RUN echo "mongoUri: ${MONGOURI}"
 ENV NODE_ENV=production
 ENV PORT=3001
 ENV APP_ID=TDS-Tarea

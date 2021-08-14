@@ -12,7 +12,7 @@ pipeline {
         MONGOURI="${MONGOURI}"
     }
     stages {
-        stage('Build') {
+        stage('Pre-Build') {
             steps {
                 sh 'npm install'
             }
@@ -21,6 +21,10 @@ pipeline {
             steps {
                 sh './jenkins/scripts/test.sh' 
             }
+        }
+        stage('Build') {
+            steps {
+                sh './jenkins/scripts/build.sh'
         }
     }
 }

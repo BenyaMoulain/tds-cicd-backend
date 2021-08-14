@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      args:
-        - MONGOURI
     ports:
       - '3001:3001'
+    environment:
+      - 'MONGOURI=${MONGOURI}'
